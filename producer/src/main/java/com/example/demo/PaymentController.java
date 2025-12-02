@@ -13,9 +13,9 @@ public class PaymentController {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    @PostMapping("/venda")
+    @PostMapping()
     public String registrarVenda(@RequestBody String venda) {
-        kafkaTemplate.send("SEU_TOPICO_AQUI", venda);
+        kafkaTemplate.send("stock-topic", venda);
         return "Venda registrada com sucesso!";
     }
 }
